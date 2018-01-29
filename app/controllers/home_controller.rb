@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
 
   def index
-
+    if session[:admin] == "accepted"
+      redirect_to customers_path
+    end
   end
 
   def create_admin
