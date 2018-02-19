@@ -3,12 +3,37 @@ class CustomersController < ApplicationController
 
   # GET /customers
   # GET /customers.json
+
+  def new_user
+    @user = Useradmin.new
+  end
+
+  def create_user
+    @user = Useradmin.new(user_params)
+    if @user.save
+      redirect_to customers_path, notice: 'User was successfully created.'
+    else
+      render :new_user
+    end
+  end
+
   def index
     if session[:admin] == "accepted"
+      @level = session[:level]
       @customers = Customer.all
     else
       redirect_to root_path
     end
+  end
+
+  def search
+    @q = Customer.search(params[:q])
+
+  end
+
+  def result
+    @q = Customer.search(params[:q])
+    @q = @q.result(distinct: true)
   end
 
   # GET /customers/1
@@ -82,6 +107,11 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :email, :phone_number, :pdffile)
+      params.require(:customer).permit(:first_name, :last_name, :email, :phone_number, :pdffile, :pdffile2, :pdffile3,
+                                       :pdffile4, :pdffile5, :pdffile6, :pdffile7, :pdffile8, :pdffile9, :pdffile10)
+    end
+
+    def user_params
+      params.require(:useradmin).permit(:username, :password, :password_confirmation, :level)
     end
 end

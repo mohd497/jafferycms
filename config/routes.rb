@@ -6,6 +6,16 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get '/logout' => 'home#logout'
+
+  get '/search_customers' => 'customers#search'
+
+  get '/results' => 'customers#result'
+
+  get '/new_user' => 'customers#new_user'
+
+  post 'create_useradmin' => 'customers#create_user'
+
   post 'create_admin' => 'home#create_admin'
   post 'create_user' => 'home#create_user'
   get 'user' => 'home#user'

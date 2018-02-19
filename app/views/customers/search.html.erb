@@ -1,0 +1,8 @@
+<%= search_form_for @q , url: results_path do |f| %>
+
+    <%= f.search_field :first_name_cont, class: "form-control" %>
+    <%= f.submit %>
+
+<% end %>
+
+<%= link_to 'Back', customers_path %>

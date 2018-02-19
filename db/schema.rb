@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180105132817) do
+ActiveRecord::Schema.define(version: 20180219103143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20180105132817) do
     t.datetime "updated_at",   null: false
     t.string   "file"
     t.string   "pdffile"
+    t.string   "pdffile2"
+    t.string   "pdffile3"
+    t.string   "pdffile4"
+    t.string   "pdffile5"
+    t.string   "pdffile6"
+    t.string   "pdffile7"
+    t.string   "pdffile8"
+    t.string   "pdffile9"
+    t.string   "pdffile10"
   end
 
   create_table "useradmins", force: :cascade do |t|
@@ -32,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180105132817) do
     t.string   "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "level"
   end
 
   create_table "users", force: :cascade do |t|

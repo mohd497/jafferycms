@@ -1,45 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<% if @level == "level1" || @level.nil? %>
-
-  <%= link_to 'New User', new_user_path %>
-
-<% end %>
-
-<%= link_to 'Logout', logout_path %>
-
 <h1>Listing Customers</h1>
 
-
-<% if @level == "level1" || @level.nil? || @level == "level2" %>
-  <%= link_to 'New Customer', new_customer_path %>
-<% end %>
+<%= link_to 'New Customer', new_customer_path %>
 
 <%= link_to 'Search', '/search_customers' %>
 
+<%= link_to 'Show All', customers_path %>
+
 <table>
   <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th>Phone number</th>
-      <th>Data</th>
-      <th>Data2</th>
-      <th>Data3</th>
-      <th>Data4</th>
-      <th>Data5</th>
-      <th>Data6</th>
-      <th>Data7</th>
-      <th>Data8</th>
-      <th>Data9</th>
-      <th>Data10</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Phone number</th>
+    <th>Data</th>
+    <th>Data2</th>
+    <th>Data3</th>
+    <th>Data4</th>
+    <th>Data5</th>
+    <th>Data6</th>
+    <th>Data7</th>
+    <th>Data8</th>
+    <th>Data9</th>
+    <th>Data10</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @customers.each do |customer| %>
+  <% @q.each do |customer| %>
       <tr>
         <td><%= customer.first_name %></td>
         <td><%= customer.last_name %></td>
@@ -50,78 +41,72 @@
             <td>N/A</td>
         <% else %>
 
-        <td><%= link_to customer.pdffile_identifier, customer.pdffile.url %></td>
+            <td><%= link_to customer.pdffile_identifier, customer.pdffile.url %></td>
 
         <% end %>
 
         <% if customer.pdffile2.url == nil %>
             <td>N/A</td>
         <% else %>
-          <td><%= link_to customer.pdffile2_identifier, customer.pdffile2.url %></td>
+            <td><%= link_to customer.pdffile2_identifier, customer.pdffile2.url %></td>
         <% end %>
 
 
         <% if customer.pdffile3.url == nil %>
             <td>N/A</td>
         <% else %>
-        <td><%= link_to customer.pdffile3_identifier, customer.pdffile3.url %></td>
+            <td><%= link_to customer.pdffile3_identifier, customer.pdffile3.url %></td>
         <% end %>
 
         <% if customer.pdffile4.url == nil %>
             <td>N/A</td>
         <% else %>
-        <td><%= link_to customer.pdffile4_identifier, customer.pdffile4.url %></td>
+            <td><%= link_to customer.pdffile4_identifier, customer.pdffile4.url %></td>
         <% end %>
 
         <% if customer.pdffile5.url == nil %>
             <td>N/A</td>
         <% else %>
-        <td><%= link_to customer.pdffile5_identifier, customer.pdffile5.url %></td>
+            <td><%= link_to customer.pdffile5_identifier, customer.pdffile5.url %></td>
         <% end %>
 
         <% if customer.pdffile6.url == nil %>
             <td>N/A</td>
         <% else %>
-        <td><%= link_to customer.pdffile6_identifier, customer.pdffile6.url %></td>
+            <td><%= link_to customer.pdffile6_identifier, customer.pdffile6.url %></td>
         <% end %>
 
         <% if customer.pdffile7.url == nil %>
             <td>N/A</td>
         <% else %>
-        <td><%= link_to customer.pdffile7_identifier, customer.pdffile7.url %></td>
+            <td><%= link_to customer.pdffile7_identifier, customer.pdffile7.url %></td>
         <% end %>
 
         <% if customer.pdffile8.url == nil %>
             <td>N/A</td>
         <% else %>
-        <td><%= link_to customer.pdffile8_identifier, customer.pdffile8.url %></td>
+            <td><%= link_to customer.pdffile8_identifier, customer.pdffile8.url %></td>
         <% end %>
 
         <% if customer.pdffile9.url == nil %>
             <td>N/A</td>
         <% else %>
-        <td><%= link_to customer.pdffile9_identifier, customer.pdffile9.url %></td>
+            <td><%= link_to customer.pdffile9_identifier, customer.pdffile9.url %></td>
         <% end %>
 
         <% if customer.pdffile10.url == nil %>
             <td>N/A</td>
         <% else %>
 
-        <td><%= link_to customer.pdffile10_identifier, customer.pdffile10.url %></td>
+            <td><%= link_to customer.pdffile10_identifier, customer.pdffile10.url %></td>
         <% end %>
 
-
-        <% if @level == "level1" || @level.nil? || @level == "level2" %>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
 <br>
-
-

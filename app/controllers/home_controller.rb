@@ -6,10 +6,25 @@ class HomeController < ApplicationController
     end
   end
 
+  def logout
+    session[:admin] = nil
+    session[:level] = nil
+    redirect_to root_path
+  end
+
   def create_admin
     asd = Useradmin.where(username: params[:username], password: params[:password]).first
     if asd
       session[:admin] = "accepted"
+
+      if asd.level == 1
+        session[:level] = "level1"
+      elsif asd.level == 2
+        session[:level] = "level2"
+      elsif asd.level == 3
+        session[:level] = "level3"
+      end
+
       redirect_to customers_path
     else
       flash[:alert] = "Username or password incorrect!"
